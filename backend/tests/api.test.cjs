@@ -3,8 +3,8 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
-const { parseTags, safeUrl, findRecipes, findRandomRecipe, allowedTags } = require('./api.cjs');
-const data = require('./recipes.seed.json');
+const { parseTags, safeUrl, findRecipes, findRandomRecipe, allowedTags } = require('../api.cjs');
+const data = require('../data/recipes.seed.json');
 test('imports 14 unique valid recipes with merged category tags', () => {
   assert.equal(data.length,14);assert.equal(new Set(data.map(r=>r.url)).size,14);
   assert(data.every(r=>safeUrl(r.url)&&r.title&&r.tags.every(t=>allowedTags.has(t))));
@@ -25,7 +25,7 @@ function browserHarness(fetcher,protocol='http:') {
   const results={children:[],textContent:'',replaceChildren(){this.children=[];this.textContent=''},appendChild(node){this.children.push(node)},get childElementCount(){return this.children.length},setAttribute(){},removeAttribute(){}};
   let randomClick;const randomButton={addEventListener(event,handler){randomClick=handler}};
   const summary={textContent:''};const document={getElementById:id=>id==='recipe-results'?results:summary,querySelectorAll:()=>buttons,querySelector:()=>randomButton,createElement:()=>({setAttribute(){}})};
-  vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../ICook.js'),'utf8'),{document,location:{protocol},URL,AbortController,setTimeout,clearTimeout,fetch:fetcher});
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../../public/assets/js/icook.js'),'utf8'),{document,location:{protocol},URL,AbortController,setTimeout,clearTimeout,fetch:fetcher});
   return {callbacks,results,summary,random:()=>randomClick()};
 }
 test('each click requests the API and displays database links, including repeat clicks',async()=>{
@@ -52,5 +52,5 @@ test('center toaster requests a new random recipe on every click and ignores sel
   await h.callbacks[0]();await h.random();await h.random();assert.deepEqual(calls,['/api/recipes?tags=potato','/api/recipes/random','/api/recipes/random']);assert.equal(h.results.children[0].href,data[5].url);assert.equal(h.summary.textContent,'A random recipe for you');
 });
 test('only the center toaster is a random button; the header stays a secret-page link',()=>{
-  const html=fs.readFileSync(path.join(__dirname,'../ICook.html'),'utf8');assert.match(html,/<button class="result-toast" type="button" aria-label="Pick a random recipe">/);assert.match(html,/<a class="toast-link" href="secretpage.html"/);assert(!html.includes('<a class="result-toast"'));
+  const html=fs.readFileSync(path.join(__dirname,'../../public/ICook.html'),'utf8');assert.match(html,/<button class="result-toast" type="button" aria-label="Pick a random recipe">/);assert.match(html,/<a class="toast-link" href="secretpage.html"/);assert(!html.includes('<a class="result-toast"'));
 });

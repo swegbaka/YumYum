@@ -59,7 +59,7 @@ app.use(xss());
 //start mongoose server
 mongoose
   .connect(
-    "mongodb+srv://crookie:<password>@cluster0.u2w5zqi.mongodb.net/?retryWrites=true&w=majority",
+    process.env.DATABASE,
     {
       useNewUrlParser: true,
       useCreateIndex: true,

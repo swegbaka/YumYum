@@ -4,11 +4,11 @@
 }
 
 .homepage {
-  background-image: url("IMG/Background.png");
+  background-image: url("../images/Background.png");
 }
 
 .anotherpage {
-  background-image: url("IMG/PureBackground.png");
+  background-image: url("../images/PureBackground.png");
 }
 
 .logo {

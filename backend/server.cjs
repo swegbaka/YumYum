@@ -3,10 +3,9 @@ const path = require('node:path');
 const fs = require('node:fs');
 const { getClient, dbName } = require('./database.cjs');
 const { parseTags, findRecipes, findRandomRecipe } = require('./api.cjs');
-const root = path.resolve(__dirname, '..');
+const root = path.resolve(__dirname, '../public');
 const mime = { '.html':'text/html; charset=utf-8', '.css':'text/css; charset=utf-8', '.js':'text/javascript; charset=utf-8', '.png':'image/png', '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.gif':'image/gif', '.svg':'image/svg+xml', '.ico':'image/x-icon', '.webp':'image/webp' };
-const publicFiles = new Set(fs.readdirSync(root).filter(name => /\.(html|css)$/.test(name)));
-['ICook.js','js/navigation.js','js/home.js','js/typed.js','js/jquery-3.6.1.min.js','js/bootstrap.bundle.js'].forEach(name => publicFiles.add(name));
+const publicFiles = new Set(fs.readdirSync(root).filter(name => /\.html$/.test(name)));
 function json(res, code, payload) { res.writeHead(code, {'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}); res.end(JSON.stringify(payload)); }
 async function main() {
   const client = getClient();
@@ -30,7 +29,7 @@ async function main() {
       const filename = path.resolve(root, relative);
       const extension = path.extname(filename).toLowerCase();
       const inRoot = filename.startsWith(root + path.sep);
-      const allowed = publicFiles.has(relative) || (/^(IMG|css)\//.test(relative) && Boolean(mime[extension]));
+      const allowed = publicFiles.has(relative) || (/^assets\//.test(relative) && Boolean(mime[extension]));
       if (!inRoot || !allowed || !mime[extension]) return json(res,404,{error:'Page not found.'});
       let stats; try { stats = await fs.promises.stat(filename); } catch { return json(res,404,{error:'Page not found.'}); }
       if (!stats.isFile()) return json(res,404,{error:'Page not found.'});
@@ -46,4 +45,4 @@ async function main() {
   const stop = () => server.close(async()=>{await client.close();process.exit(0);});
   process.on('SIGINT',stop);process.on('SIGTERM',stop);
 }
-main().catch(()=>{console.error('Could not connect to MongoDB. Check backend/.env, database user, and Atlas IP access list. See MONGODB-SETUP.md.');process.exitCode=1;});
+main().catch(()=>{console.error('Could not connect to MongoDB. Check backend/.env, database user, and Atlas IP access list. See docs/mongodb.md.');process.exitCode=1;});
