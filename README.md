@@ -21,11 +21,10 @@ backend/
   scripts/              Database import utilities
   tests/                Automated behavior and asset checks
 docs/                   MongoDB and deployment guides
-archive/                Previous server and frontend prototypes
 render.yaml             Render deployment configuration
 ```
 
-`archive/` is reference material, not part of the running website. The server serves only `public/`. Page URLs such as `/ICook.html` and `/secretpage.html` have not changed.
+The server serves only `public/`. Superseded prototypes and unused pages/assets have been removed; Git history retains the previous implementation. Page URLs such as `/ICook.html` and `/secretpage.html` have not changed.
 
 ## Run locally
 

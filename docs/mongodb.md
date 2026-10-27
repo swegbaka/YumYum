@@ -1,6 +1,6 @@
 # Connect YumYum to MongoDB
 
-**Already configured on this computer.** See atlas-status.md for current status. The database is populated and the app uses a read-only login. The setup/import steps below are for a new deployment; do not rerun the importer with the read-only website account.
+**Already configured on this computer.** See deployment.md for current status. The database is populated and the app uses a read-only login. The setup/import steps below are for a new deployment; do not rerun the importer with the read-only website account.
 
 Prepared from receipe.txt: 16 entries became 14 unique Bilibili recipe links. Duplicate URLs share tags (tofu/noodle and broccoli/cabbage). Chinese titles are preserved; tracking parameters were removed. Empty numbered entries were skipped. Only the chicken recipe explicitly mentions an air fryer, so that cookware tag was added. No cooking tools or ingredients were guessed from the videos.
 
@@ -72,6 +72,6 @@ Run `npm test` in backend for query, import, and click-handling checks. Live dat
 - Old results: use the localhost page and reload it; ensure you started the server from backend, not the old root node.js.
 - Port 3000 already used: change PORT in backend/.env and use that port in your browser.
 
-The previous Node/Express files are retained under archive/legacy-server and are not used by this recipe server. Use only backend/npm start for this integration. This server binds to your local computer; deploying it publicly is a separate step.
+The previous Node/Express implementation was removed; this repository uses only the current recipe server. Use only backend/npm start for this integration. This server binds to your local computer; deploying it publicly is a separate step.
 
-Atlas setup has now created the YumYum project, Free Cluster0, and yumyum.recipes collection with all 14 unique recipes. URL uniqueness and tag indexes are ready. Application access is configured and live-tested; see atlas-status.md. Do not repeat the manual JSON import.
+Atlas setup has now created the YumYum project, Free Cluster0, and yumyum.recipes collection with all 14 unique recipes. URL uniqueness and tag indexes are ready. Application access is configured and live-tested; see deployment.md. Do not repeat the manual JSON import.

@@ -9,7 +9,7 @@
 - Automatic deployment: commits to `main`
 - Runtime: Node.js 22
 
-All public pages and assets live in `public/`. The server resolves this directory relative to its source file, so the build/start commands do not change when frontend files are moved. `backend/`, `docs/`, and `archive/` are never served as website files.
+All public pages and assets live in `public/`. The server resolves this directory relative to its source file, so the build/start commands do not change when frontend files are moved. `backend/` and `docs/` are never served as website files.
 
 Store `MONGODB_URI` privately in Render Environment settings. Set `MONGODB_DB=yumyum`; Render supplies `PORT`. The server listens on the host configured by `HOST`, defaulting to `0.0.0.0` on Render and localhost during local development.
 
