@@ -1,0 +1,1 @@
+if(typeof Typed==='function'&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelector('.auto-input').textContent='';new Typed('.auto-input',{strings:["Don't know what to eat? No worry we gotcha!","Ready to cook?","Cooking isn't that hard"],typeSpeed:110,backSpeed:100,loop:true});}

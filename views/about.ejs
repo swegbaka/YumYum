@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+  </head>
+  <body class="anotherpage">
+    <script src="js/bootstrap.bundle.js"></script>
+    <header>
+      <div>
+        <img class="header" src="img/Crookies.png" alt="Crookies" />
+      </div>
+    </header>
+    <div class="log">
+      <img src="img/logo.png" alt="A welcome toaster" class="logo" />
+    </div>
+    <div id="NavPanel">
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/help">Help</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div id="menuBotton">
+      <img src="IMG/menu.png" id="menu" />
+    </div>
+    <h1 class="paragraph">
+      <br /><br /><br /><br /><br /><br /><br />
+      This is a website application based one Nodejs and Express, as well as
+      MongoDB.<br />
+      The goal of this application is to teach kitchen beginner to learn how to
+      cook <br />
+      start from scratch. Stay clam and fire on!
+    </h1>
+    <script>
+      var menuBotton = document.getElementById("menuBotton");
+      var NavPanel = document.getElementById("NavPanel");
+      var menu = document.getElementById("menu");
+
+      NavPanel.style.right = "-250px";
+
+      menuBotton.onclick = function () {
+        if (NavPanel.style.right == "-250px") {
+          NavPanel.style.right = "0";
+          menu.src = "IMG/close.png";
+        } else {
+          NavPanel.style.right = "-250px";
+          menu.src = "IMG/menu.png";
+        }
+      };
+    </script>
+  </body>
+</html>

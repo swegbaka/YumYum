@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="shortcut icon" href="#" />
+  </head>
+  <body class="loginbackground">
+    <div><img class="header" src="../img/Crookies.png" alt="Crookies" /></div>
+    <h1 class="logintitle">Login</h1>
+    <br />
+    <div class="loginpage">
+      <form class="login" method="post">
+        <label><b>User Name </b></label>
+        <input
+          id="Uname"
+          type="email"
+          name="Uname"
+          placeholder="Username"
+        /><br /><br />
+        <label><b>Password </b></label>
+        <input
+          id="Pass"
+          type="Password"
+          name="Pass"
+          placeholder="Password"
+        /><br /><br />
+        <button class="submitbtn" type="submit">submit</button><br /><br />
+      </form>
+    </div>
+    <script
+      type="module"
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/esm/axios.min.js"
+    ></script>
+    <script src="../js/login.js"></script>
+  </body>
+</html>

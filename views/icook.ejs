@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width = device-width, initial-scale=1" />
+    <title></title>
+    <link rel="stylesheet2" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+  </head>
+  <body class="anotherpage">
+    <script src="js/bootstrap.bundle.js"></script>
+    <header>
+      <div>
+        <div>
+          <img class="logo" src="img/logo.png" alt="A welcome toaster" />
+        </div>
+        <div><img class="header" src="img/CROOKIES.png" alt="Crookies" /></div>
+        <div>
+          <div class="logbtn"><a href="/login">login</a></div>
+          <div class="signupbtn"><a href="/signup">signup</a></div>
+          <div id="menuBotton"><img id="menu" src="img/menu.png" /></div>
+        </div>
+        <div class="cart-nav">
+          <img class="cart-icon" src="img/WOItems.png" />
+        </div>
+        <div class="veg">
+          <p>What <strong>veggies</strong> in the fridge?</p>
+        </div>
+        <div class="veg-table">
+          <button class="veg-butn-on">&#x1F954; Potato</button>
+          <button class="veg-butn">&#x1F9C8; Tofu</button>
+          <button class="veg-butn">&#x1F966; Broccoli</button>
+          <button class="veg-butn">&#x1F96C; Cabbage</button>
+          <button class="veg-butn">&#x1F345; Tomato</button>
+          <button class="veg-butn">&#x1F955; Carrot</button>
+          <button class="veg-butn">&#x1F383; Pumpkin</button>
+          <button class="veg-butn">&#x1F344; Mushroom</button>
+          <button class="veg-butn">&#x1F346; Eggplant</button>
+          <button class="veg-butn">&#x1F33D; Corn</button>
+          <button class="veg-butn">&#x1F96C; Lettuce</button>
+        </div>
+        <div class="meat">
+          <p>what <strong>meat</strong> we have today?</p>
+        </div>
+        <div class="meat-table" >
+          <% for(let i=0; i<foodName.length; i++) { %>
+            <button class="meat-butn-on">
+              <%- foodName[i].emoji %> <%= foodName[i].foodName %>  
+            </button>
+          <% } %>
+        </div>
+        <!-- <% for(let i=0; i<foodName.length; i++) { %>
+          <p id="test"> <%= foodName[i].link1 %> </p>
+          <p id="test"> <%= foodName[i].Link %> </p>
+        <% } %> -->
+        <div class="cookware">
+          <p>Most importantly what <strong>cookware </strong>?</p>
+        </div>
+        <div class="cookware-table">
+          <button class="cookware-butn-on">&#x1F373; Pan</button>
+          <button class="cookware-butn">&#x1F4DF; Mircowave</button>
+          <button class="cookware-butn">&#x1F958; Pot</button>
+          <button class="cookware-butn">&#x1F4A8;&#x1F525; Air-fryer</button>
+          <button class="cookware-butn">&#x1F39E;&#xFE0F; Oven</button>
+        </div>
+      </div>
+    </header>
+    <div id="NavPanel">
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="category.html">Category</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/help">Help</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="container">
+      <div class="starch">
+        Any <strong>starch</strong> today?(optional)<br />
+        <button class="starch-butn">Rice</button><br />
+        <button class="starch-butn">noodle</button>
+      </div>
+      <div class="result">
+        Let&apos;s see what&apos;s delicacy for today!
+          <% for(let i=0; i<foodName.length; i++) { %>
+            <p class="testing"><a href="<%= foodName[i].Link %>" type="button"><%= foodName[i].foodName %></a></p>
+            <!-- <p class="testing"><a href="<%= foodName[i].link1 %>" type="button"><%= foodName[i].foodName %></a></p> -->
+          <% } %>
+        <ul id="display">
+          <img src="img/cookStart.png" alt="" />
+        </ul>
+        <!-- <button>START COOKING!!</button> -->
+      </div>
+      <div class="dessert">
+        Some tasty <strong>dessert</strong> maybe?(optional)<br />
+        <button class="dessert-butn">Cake</button>
+      </div>
+    </div>
+    <p class="footer">
+      &copy; by Jinwei Shao and zuyu Mei. All rights reserved.
+    </p>
+    <script type="module" src="../js/ICook.js"></script>
+    <script type="module" src="../js/DisplayURL.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="js/jquery-3.6.1.min.js"></script>
+  </body>
+</html>
