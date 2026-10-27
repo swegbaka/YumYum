@@ -14,4 +14,12 @@ async function findRecipes(collection, tags) {
   const rows = await collection.find({ tags: { $in: tags } }, { projection: { _id: 0, title: 1, url: 1, tags: 1 } }).sort({ title: 1, url: 1 }).limit(100).toArray();
   return rows.filter(row => typeof row.title === 'string' && safeUrl(row.url));
 }
-module.exports = { allowedTags, parseTags, safeUrl, findRecipes };
+async function findRandomRecipe(collection) {
+  const rows = await collection.aggregate([
+    { $match: { title: { $type: 'string' }, url: { $regex: '^https://(www\\.)?bilibili\\.com/video/BV[a-zA-Z0-9]+/?$' } } },
+    { $sample: { size: 1 } },
+    { $project: { _id: 0, title: 1, url: 1, tags: 1 } }
+  ], { maxTimeMS: 5000 }).toArray();
+  return rows.filter(row => typeof row.title === 'string' && safeUrl(row.url));
+}
+module.exports = { allowedTags, parseTags, safeUrl, findRecipes, findRandomRecipe };

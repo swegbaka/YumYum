@@ -2,7 +2,7 @@ const http = require('node:http');
 const path = require('node:path');
 const fs = require('node:fs');
 const { getClient, dbName } = require('./database.cjs');
-const { parseTags, findRecipes } = require('./api.cjs');
+const { parseTags, findRecipes, findRandomRecipe } = require('./api.cjs');
 const root = path.resolve(__dirname, '..');
 const mime = { '.html':'text/html; charset=utf-8', '.css':'text/css; charset=utf-8', '.js':'text/javascript; charset=utf-8', '.png':'image/png', '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.gif':'image/gif', '.svg':'image/svg+xml', '.ico':'image/x-icon', '.webp':'image/webp' };
 const publicFiles = new Set(fs.readdirSync(root).filter(name => /\.(html|css)$/.test(name)));
@@ -17,6 +17,10 @@ async function main() {
       if (!['GET','HEAD'].includes(req.method)) { res.setHeader('Allow','GET, HEAD'); return json(res,405,{error:'Method not allowed.'}); }
       const url = new URL(req.url, 'http://localhost');
       if (url.pathname === '/healthz') return json(res,200,{status:'ok'});
+      if (url.pathname === '/api/recipes/random') {
+        try { return json(res,200,{recipes:await findRandomRecipe(collection)}); }
+        catch { return json(res,503,{error:'Recipes are temporarily unavailable. Please try again.'}); }
+      }
       if (url.pathname === '/api/recipes') {
         let tags; try { tags = parseTags(url); } catch (err) { return json(res,400,{error:err.message}); }
         try { return json(res,200,{recipes:await findRecipes(collection,tags)}); }
