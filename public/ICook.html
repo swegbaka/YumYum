@@ -1,1 +1,271 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>iCook — YumYum</title><link rel="stylesheet" href="assets/css/refresh.css"><link rel="stylesheet" href="assets/css/icook-layout.css"><link rel="stylesheet" href="assets/css/navigation-layout.css"><script src="assets/js/navigation.js" defer></script><script src="assets/js/icook.js" defer></script></head><body class="icook-page"><header class="site-header"><a class="toast-link" href="secretpage.html" aria-label="Discover the secret recipes"><img src="assets/images/logo.png" alt="Red toaster" width="56" height="56"></a><a class="brand" href="index.html" aria-label="YumYum home"><img src="assets/images/yumyum.png" alt="YumYum" width="2720" height="928"></a><div class="menu-anchor"><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu <span aria-hidden="true">☰</span></button><nav id="site-nav" class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="ICook.html">Start cooking</a><a href="about.html">About</a><a href="help.html">Help</a></nav></div></header><main><div class="ingredient-picker"><div class="cook-intro"><p>YOUR KITCHEN, YOUR INGREDIENTS</p><h1>A little inspiration for your next meal.</h1><span>Pick what you have. Let’s make something delicious.</span></div><section class="ingredient-section veggies"><h2>What <strong>veggies</strong> in the fridge?</h2><div class="ingredient-buttons"><button type="button" data-group="veggies" data-value="potato" aria-pressed="false">🥔 Potato</button><button type="button" data-group="veggies" data-value="tofu" aria-pressed="false">🧈 Tofu</button><button type="button" data-group="veggies" data-value="broccoli" aria-pressed="false">🥦 Broccoli</button><button type="button" data-group="veggies" data-value="cabbage" aria-pressed="false">🥒 Cabbage</button><button type="button" data-group="veggies" data-value="tomato" aria-pressed="false">🍅 Tomato</button><button type="button" data-group="veggies" data-value="carrot" aria-pressed="false">🥕 Carrot</button><button type="button" data-group="veggies" data-value="pumpkin" aria-pressed="false">🎃 Pumpkin</button><button type="button" data-group="veggies" data-value="mushroom" aria-pressed="false">🍄 Mushroom</button><button type="button" data-group="veggies" data-value="eggplant" aria-pressed="false">🍆 Eggplant</button><button type="button" data-group="veggies" data-value="corn" aria-pressed="false">🌽 Corn</button><button type="button" data-group="veggies" data-value="lettuce" aria-pressed="false">🥬 Lettuce</button></div></section><section class="ingredient-section meat"><h2>What <strong>meat</strong> we have today?</h2><div class="ingredient-buttons"><button type="button" data-group="meat" data-value="chicken" aria-pressed="false">🐔 Chicken</button><button type="button" data-group="meat" data-value="beef" aria-pressed="false">🐄 Beef</button><button type="button" data-group="meat" data-value="pork" aria-pressed="false">🐷 Pork</button><button type="button" data-group="meat" data-value="seafood" aria-pressed="false">🐟 Seafood</button><button type="button" data-group="meat" data-value="lamb" aria-pressed="false">🐑 Lamb</button></div></section><section class="ingredient-section tools"><h2>Most importantly what <strong>cookware</strong> ?</h2><div class="ingredient-buttons"><button type="button" data-group="tools" data-value="pan" aria-pressed="false">🍳 Pan</button><button type="button" data-group="tools" data-value="microwave" aria-pressed="false">📟 Microwave</button><button type="button" data-group="tools" data-value="pot" aria-pressed="false">🥘 Pot</button><button type="button" data-group="tools" data-value="air-fryer" aria-pressed="false">💨🔥 Air-fryer</button><button type="button" data-group="tools" data-value="oven" aria-pressed="false">▣ Oven</button></div></section></div><section class="cooking-board"><aside class="starch-options"><h2>Any <strong>starch</strong> today?</h2><button type="button" data-group="starch" data-value="rice" aria-pressed="false">🍚 Rice</button><button type="button" data-group="starch" data-value="noodle" aria-pressed="false">🍜 Noodle</button></aside><section class="cooking-results"><h2>Let’s see what’s cooking today!</h2><button class="result-toast" type="button" aria-label="Pick a random recipe"><img src="assets/images/logo.png" alt="Red toaster"></button><div id="selected-ingredients" aria-live="polite"></div><div id="recipe-results" aria-live="polite"></div></section><aside class="dessert-options"><h2>Are you a <strong>dessert</strong> stomach? (*☌ᴗ☌)｡*ﾟ</h2><button type="button" data-group="dessert" data-value="cake" aria-pressed="false">🧁 Cake</button><button type="button" data-group="dessert" data-value="ice cream" aria-pressed="false">🍦 Ice Cream</button></aside></section></main></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>iCook — YumYum</title>
+    <link rel="stylesheet" href="assets/css/refresh.css" />
+    <link rel="stylesheet" href="assets/css/icook-layout.css" />
+    <link rel="stylesheet" href="assets/css/navigation-layout.css" />
+    <script src="assets/js/navigation.js" defer></script>
+    <script src="assets/js/icook.js" defer></script>
+  </head>
+  <body class="icook-page">
+    <header class="site-header">
+      <a
+        class="toast-link"
+        href="secretpage.html"
+        aria-label="Discover the secret recipes"
+        ><img
+          src="assets/images/logo.png"
+          alt="Red toaster"
+          width="56"
+          height="56" /></a
+      ><a class="brand" href="index.html" aria-label="YumYum home"
+        ><img
+          src="assets/images/yumyum.png"
+          alt="YumYum"
+          width="2720"
+          height="928"
+      /></a>
+      <div class="menu-anchor">
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          Menu <span aria-hidden="true">☰</span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+          <a href="index.html">Home</a><a href="ICook.html">Start cooking</a
+          ><a href="about.html">About</a><a href="help.html">Help</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="ingredient-picker">
+        <div class="cook-intro">
+          <p>YOUR KITCHEN, YOUR INGREDIENTS</p>
+          <h1>A little inspiration for your next meal.</h1>
+          <span>Pick what you have. Let’s make something delicious.</span>
+        </div>
+        <section class="ingredient-section veggies">
+          <h2>What <strong>veggies</strong> in the fridge?</h2>
+          <div class="ingredient-buttons">
+            <button
+              type="button"
+              data-group="veggies"
+              data-value="potato"
+              aria-pressed="false"
+            >
+              🥔 Potato</button
+            ><button
+              type="button"
+              data-group="veggies"
+              data-value="tofu"
+              aria-pressed="false"
+            >
+              🧈 Tofu</button
+            ><button
+              type="button"
+              data-group="veggies"
+              data-value="broccoli"
+              aria-pressed="false"
+            >
+              🥦 Broccoli</button
+            ><button
+              type="button"
+              data-group="veggies"
+              data-value="cabbage"
+              aria-pressed="false"
+            >
+              🥒 Cabbage</button
+            ><button
+              type="button"
+              data-group="veggies"
+              data-value="tomato"
+              aria-pressed="false"
+            >
+              🍅 Tomato</button
+            ><button
+              type="button"
+              data-group="veggies"
+              data-value="carrot"
+              aria-pressed="false"
+            >
+              🥕 Carrot</button
+            ><button
+              type="button"
+              data-group="veggies"
+              data-value="pumpkin"
+              aria-pressed="false"
+            >
+              🎃 Pumpkin</button
+            ><button
+              type="button"
+              data-group="veggies"
+              data-value="mushroom"
+              aria-pressed="false"
+            >
+              🍄 Mushroom</button
+            ><button
+              type="button"
+              data-group="veggies"
+              data-value="eggplant"
+              aria-pressed="false"
+            >
+              🍆 Eggplant</button
+            ><button
+              type="button"
+              data-group="veggies"
+              data-value="corn"
+              aria-pressed="false"
+            >
+              🌽 Corn</button
+            ><button
+              type="button"
+              data-group="veggies"
+              data-value="lettuce"
+              aria-pressed="false"
+            >
+              🥬 Lettuce
+            </button>
+          </div>
+        </section>
+        <section class="ingredient-section meat">
+          <h2>What <strong>meat</strong> we have today?</h2>
+          <div class="ingredient-buttons">
+            <button
+              type="button"
+              data-group="meat"
+              data-value="chicken"
+              aria-pressed="false"
+            >
+              🐔 Chicken</button
+            ><button
+              type="button"
+              data-group="meat"
+              data-value="beef"
+              aria-pressed="false"
+            >
+              🐄 Beef</button
+            ><button
+              type="button"
+              data-group="meat"
+              data-value="pork"
+              aria-pressed="false"
+            >
+              🐷 Pork</button
+            ><button
+              type="button"
+              data-group="meat"
+              data-value="seafood"
+              aria-pressed="false"
+            >
+              🐟 Seafood</button
+            ><button
+              type="button"
+              data-group="meat"
+              data-value="lamb"
+              aria-pressed="false"
+            >
+              🐑 Lamb
+            </button>
+          </div>
+        </section>
+        <section class="ingredient-section tools">
+          <h2>Most importantly what <strong>cookware</strong> ?</h2>
+          <div class="ingredient-buttons">
+            <button
+              type="button"
+              data-group="tools"
+              data-value="pan"
+              aria-pressed="false"
+            >
+              🍳 Pan</button
+            ><button
+              type="button"
+              data-group="tools"
+              data-value="microwave"
+              aria-pressed="false"
+            >
+              📟 Microwave</button
+            ><button
+              type="button"
+              data-group="tools"
+              data-value="pot"
+              aria-pressed="false"
+            >
+              🥘 Pot</button
+            ><button
+              type="button"
+              data-group="tools"
+              data-value="air-fryer"
+              aria-pressed="false"
+            >
+              💨🔥 Air-fryer</button
+            ><button
+              type="button"
+              data-group="tools"
+              data-value="oven"
+              aria-pressed="false"
+            >
+              ▣ Oven
+            </button>
+          </div>
+        </section>
+      </div>
+      <section class="cooking-board">
+        <aside class="starch-options">
+          <h2>Any <strong>starch</strong> today?</h2>
+          <button
+            type="button"
+            data-group="starch"
+            data-value="rice"
+            aria-pressed="false"
+          >
+            🍚 Rice</button
+          ><button
+            type="button"
+            data-group="starch"
+            data-value="noodle"
+            aria-pressed="false"
+          >
+            🍜 Noodle
+          </button>
+        </aside>
+        <section class="cooking-results">
+          <h2>Let’s see what’s cooking today!</h2>
+          <button
+            class="result-toast"
+            type="button"
+            aria-label="Pick a random recipe"
+          >
+            <img src="assets/images/logo.png" alt="Red toaster" />
+          </button>
+          <div id="selected-ingredients" aria-live="polite"></div>
+          <div id="recipe-results" aria-live="polite"></div>
+        </section>
+        <aside class="dessert-options">
+          <h2>Are you a <strong>dessert</strong> stomach? (*☌ᴗ☌)｡*ﾟ</h2>
+          <button
+            type="button"
+            data-group="dessert"
+            data-value="cake"
+            aria-pressed="false"
+          >
+            🧁 Cake</button
+          ><button
+            type="button"
+            data-group="dessert"
+            data-value="ice cream"
+            aria-pressed="false"
+          >
+            🍦 Ice Cream
+          </button>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>
