@@ -52,5 +52,20 @@ test('center toaster requests a new random recipe on every click and ignores sel
   await h.callbacks[0]();await h.random();await h.random();assert.deepEqual(calls,['/api/recipes?tags=potato','/api/recipes/random','/api/recipes/random']);assert.equal(h.results.children[0].href,data[5].url);assert.equal(h.summary.textContent,'A random recipe for you');
 });
 test('only the center toaster is a random button; the header stays a secret-page link',()=>{
-  const html=fs.readFileSync(path.join(__dirname,'../../public/ICook.html'),'utf8');assert.match(html,/<button class="result-toast" type="button" aria-label="Pick a random recipe">/);assert.match(html,/<a class="toast-link" href="secretpage.html"/);assert(!html.includes('<a class="result-toast"'));
+  const html=fs.readFileSync(path.join(__dirname,'../../public/ICook.html'),'utf8');
+  // Inspect attributes independently of whitespace, line breaks, and attribute order.
+  const elements=[...html.matchAll(/<(a|button)\b([^>]*)>/gi)].map(match=>({
+    tag:match[1].toLowerCase(),
+    attributes:Object.fromEntries([...match[2].matchAll(/([\w:-]+)\s*=\s*(["'])([\s\S]*?)\2/g)].map(attribute=>[attribute[1],attribute[3]]))
+  }));
+  const withClass=name=>elements.filter(element=>(element.attributes.class||'').split(/\s+/).includes(name));
+  const center=withClass('result-toast');
+  assert.equal(center.length,1,'Exactly one center toaster control is required');
+  assert.equal(center[0].tag,'button');
+  assert.equal(center[0].attributes.type,'button');
+  assert.equal(center[0].attributes['aria-label'],'Pick a random recipe');
+  const header=withClass('toast-link');
+  assert.equal(header.length,1,'Exactly one header toaster link is required');
+  assert.equal(header[0].tag,'a');
+  assert.equal(header[0].attributes.href,'secretpage.html');
 });
